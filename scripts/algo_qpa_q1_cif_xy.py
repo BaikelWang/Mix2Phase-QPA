@@ -196,32 +196,32 @@ def run_demo(normalize_max: bool, json_out: str | None) -> None:
         entry_to_cif(e0, p_a)
         entry_to_cif(e1, p_b)
 
-    _, ya = interpolate_pxrd(
-        X_MAX,
-        np.asarray(e0["pxrd_x"], dtype=np.float64),
-        np.asarray(e0["pxrd_y"], dtype=np.float64),
-        num_fill=2,
-        threshold=5,
-        step=STEP,
-    )
-    _, yb = interpolate_pxrd(
-        X_MAX,
-        np.asarray(e1["pxrd_x"], dtype=np.float64),
-        np.asarray(e1["pxrd_y"], dtype=np.float64),
-        num_fill=2,
-        threshold=5,
-        step=STEP,
-    )
-    ya = np.asarray(ya, dtype=np.float64)
-    yb = np.asarray(yb, dtype=np.float64)
-    if normalize_max:
-        if ya.max() > 0:
-            ya = ya / ya.max()
-        if yb.max() > 0:
-            yb = yb / yb.max()
+        _, ya = interpolate_pxrd(
+            X_MAX,
+            np.asarray(e0["pxrd_x"], dtype=np.float64),
+            np.asarray(e0["pxrd_y"], dtype=np.float64),
+            num_fill=2,
+            threshold=5,
+            step=STEP,
+        )
+        _, yb = interpolate_pxrd(
+            X_MAX,
+            np.asarray(e1["pxrd_x"], dtype=np.float64),
+            np.asarray(e1["pxrd_y"], dtype=np.float64),
+            num_fill=2,
+            threshold=5,
+            step=STEP,
+        )
+        ya = np.asarray(ya, dtype=np.float64)
+        yb = np.asarray(yb, dtype=np.float64)
+        if normalize_max:
+            if ya.max() > 0:
+                ya = ya / ya.max()
+            if yb.max() > 0:
+                yb = yb / yb.max()
 
-    w_true = 0.37
-    y_m = w_true * ya + (1.0 - w_true) * yb + np.random.default_rng(0).normal(0, 0.005, ya.shape)
+        w_true = 0.37
+        y_m = w_true * ya + (1.0 - w_true) * yb + np.random.default_rng(0).normal(0, 0.005, ya.shape)
         mix_path = tmpdir / "demo_mix.xy"
         with mix_path.open("w", encoding="utf-8") as f:
             for x, y in zip(GRID, y_m):

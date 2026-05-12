@@ -15,6 +15,7 @@
 | [`mix2phase_common.py`](mix2phase_common.py) | 本项目共用常量、插值、mp20 读取与写谱辅助函数 |
 | [`run_eval20.sh`](run_eval20.sh) | 重新生成 `results/eval20_summary.json` 与 `results/q1_eval20_run/*/mix.xy` |
 | [`run_fixed_pair_w10.sh`](run_fixed_pair_w10.sh) | 固定一对 A/B，生成 10 个不同比例的横向对比结果 |
+| [`make_readme_figures.py`](make_readme_figures.py) | 由 `results/eval20_summary.json` 生成 `docs/figures/pxrd_demo_pair0008.png` 与 `docs/figures/accuracy_eval20.png` |
 
 **日常推理（混合谱 + mp20 查表）**：
 

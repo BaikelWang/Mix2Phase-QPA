@@ -9,6 +9,74 @@
 
 `混合谱 + 两条参考谱 -> NNLS -> A/B 占比`
 
+## Usage Flow
+
+```mermaid
+flowchart LR
+    subgraph IN["Inputs"]
+        S_A["Phase A structure<br/>(formula + cell + atoms)"]
+        S_B["Phase B structure<br/>(formula + cell + atoms)"]
+        MIX["Mixed PXRD<br/>(measured y_mix)"]
+    end
+
+    subgraph REF["Reference patterns"]
+        REFA["y_A on shared 2theta grid"]
+        REFB["y_B on shared 2theta grid"]
+    end
+
+    subgraph CORE["Core fit"]
+        STACK["Stack [y_A, y_B]"]
+        NNLS["NNLS<br/>min ||y_mix - alpha*y_A - beta*y_B||^2<br/>s.t. alpha, beta &gt;= 0"]
+        NORM["Normalise:<br/>w_A_hat = alpha / (alpha + beta)<br/>w_B_hat = 1 - w_A_hat"]
+    end
+
+    OUT["Output:<br/>w_A_hat, w_B_hat<br/>+ residual / quality metrics"]
+
+    S_A -- "XRDCalculator / lookup" --> REFA
+    S_B -- "XRDCalculator / lookup" --> REFB
+    MIX -- "interpolate to shared grid + max-normalise" --> STACK
+    REFA --> STACK
+    REFB --> STACK
+    STACK --> NNLS --> NORM --> OUT
+```
+
+In one line: **structure of A + structure of B + measured mixed PXRD -> two reference patterns -> non-negative least squares -> normalised weights**.
+
+## Demo: A, B and Mixed PXRD on a Real Test Pair
+
+The figure below is generated automatically by [`scripts/make_readme_figures.py`](scripts/make_readme_figures.py) from the bundled 20-sample evaluation. It shows test pair `#8` (`A = MoNb3Se8`, `B = Rh6Sn10Tb4`):
+
+- top: max-normalised reference PXRD of phase A
+- middle: max-normalised reference PXRD of phase B
+- bottom: input mixed PXRD (green) overlaid with the NNLS reconstruction `alpha*A + beta*B` (dashed grey), with the true / predicted A weight printed in the inset
+
+![PXRD demo on test pair #8 (A = MoNb3Se8, B = Rh6Sn10Tb4)](docs/figures/pxrd_demo_pair0008.png)
+
+For this pair the true mixing ratio is `w_A = 0.4918`, the predicted value is `w_A_hat = 0.4921`, i.e. an absolute error of `3.25e-04`.
+
+## Accuracy on the 20-Sample Test Set
+
+Aggregated metrics on the 20 randomly drawn test pairs (`results/eval20_summary.json`):
+
+| metric | value |
+| --- | --- |
+| MAE of `abs(w_A_hat - w_A)` | **6.60e-04** |
+| RMSE | **7.90e-04** |
+| max absolute error | **1.39e-03** |
+| failed runs | 0 / 20 |
+
+![Mix2Phase-QPA accuracy on 20 test pairs (parity plot + per-sample absolute error)](docs/figures/accuracy_eval20.png)
+
+The left panel shows that all 20 predictions sit on top of the ideal `y = x` line; the right panel shows per-sample absolute errors are uniformly below `1.4 x 10^-3`, with the dashed red line marking the dataset MAE.
+
+To regenerate the two PNGs above after re-running the evaluation:
+
+```bash
+python3 scripts/make_readme_figures.py
+```
+
+(`docs/figures/` will be created automatically; the script reads `results/eval20_summary.json` and the bundled `data/mp20_data/test.lmdb`.)
+
 ## Repository Contents
 
 | Path | Description |
