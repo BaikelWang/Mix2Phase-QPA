@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+.venv/
+venv/
+env/
+
+*.log
+
+data/pair1k_v3/
+data/mp20_data/*.lmdb
+
+results/_autogen/
+results/**/*.cif

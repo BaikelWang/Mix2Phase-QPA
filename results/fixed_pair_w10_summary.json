@@ -1,0 +1,158 @@
+{
+  "script": "scripts/eval_fixed_pair_w10.py",
+  "pipeline": "synthetic_mix_from_lookup_refs + same lookup refs + NNLS",
+  "pair_idx_note_from_eval50": 73,
+  "ref_a_mp20": 2155,
+  "ref_b_mp20": 3497,
+  "label_A": "mp20[2155] BaCu2O4Sr",
+  "label_B": "mp20[3497] Ga2H2O4",
+  "w_values": [
+    0.05,
+    0.15,
+    0.25,
+    0.35,
+    0.45,
+    0.55,
+    0.65,
+    0.75,
+    0.85,
+    0.95
+  ],
+  "metrics": {
+    "mae_abs_w": 1.8160269885103554e-10,
+    "rmse_w": 2.1141233076385286e-10,
+    "max_abs_error": 3.97698429743798e-10
+  },
+  "records": [
+    {
+      "run": 1,
+      "w_true": 0.05,
+      "w_hat": 0.050000000223398046,
+      "abs_error": 2.2339804311988232e-10,
+      "signed_error": 2.2339804311988232e-10,
+      "residual_l2_nnls": 1.0305251211125348e-07,
+      "nnls_coef_alpha_beta": [
+        0.05225076788609449,
+        0.9927645851667077
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/00_w050/mix.xy"
+    },
+    {
+      "run": 2,
+      "w_true": 0.15,
+      "w_hat": 0.14999999971899253,
+      "abs_error": 2.8100746729542436e-10,
+      "signed_error": -2.8100746729542436e-10,
+      "residual_l2_nnls": 1.1379524272107158e-07,
+      "nnls_coef_alpha_beta": [
+        0.17226109215454155,
+        0.9761461910271423
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/01_w150/mix.xy"
+    },
+    {
+      "run": 3,
+      "w_true": 0.25,
+      "w_hat": 0.24999999989563948,
+      "abs_error": 1.0436052022555486e-10,
+      "signed_error": -1.0436052022555486e-10,
+      "residual_l2_nnls": 1.2716395272547657e-07,
+      "nnls_coef_alpha_beta": [
+        0.3186261125469542,
+        0.9558783381728944
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/02_w250/mix.xy"
+    },
+    {
+      "run": 4,
+      "w_true": 0.35,
+      "w_hat": 0.3499999997632513,
+      "abs_error": 2.3674867621892304e-10,
+      "signed_error": -2.3674867621892304e-10,
+      "residual_l2_nnls": 1.4328969252818833e-07,
+      "nnls_coef_alpha_beta": [
+        0.5009494132211632,
+        0.9303346255217448
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/03_w350/mix.xy"
+    },
+    {
+      "run": 5,
+      "w_true": 0.45,
+      "w_hat": 0.4500000002032747,
+      "abs_error": 2.0327467487035733e-10,
+      "signed_error": 2.0327467487035733e-10,
+      "residual_l2_nnls": 1.4404693493950863e-07,
+      "nnls_coef_alpha_beta": [
+        0.6537313381747523,
+        0.7990049682240206
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/04_w450/mix.xy"
+    },
+    {
+      "run": 6,
+      "w_true": 0.55,
+      "w_hat": 0.5499999998042898,
+      "abs_error": 1.9571022580322506e-10,
+      "signed_error": -1.9571022580322506e-10,
+      "residual_l2_nnls": 1.3645372846730247e-07,
+      "nnls_coef_alpha_beta": [
+        0.7382365227773856,
+        0.6040117009318456
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/05_w550/mix.xy"
+    },
+    {
+      "run": 7,
+      "w_true": 0.65,
+      "w_hat": 0.649999999961807,
+      "abs_error": 3.8193004314734935e-11,
+      "signed_error": -3.8193004314734935e-11,
+      "residual_l2_nnls": 1.256401988561248e-07,
+      "nnls_coef_alpha_beta": [
+        0.8107961117063907,
+        0.4365825217613507
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/06_w650/mix.xy"
+    },
+    {
+      "run": 8,
+      "w_true": 0.75,
+      "w_hat": 0.7499999996023016,
+      "abs_error": 3.97698429743798e-10,
+      "signed_error": -3.97698429743798e-10,
+      "residual_l2_nnls": 1.1625554032489514e-07,
+      "nnls_coef_alpha_beta": [
+        0.8737758448602801,
+        0.2912586155712032
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/07_w750/mix.xy"
+    },
+    {
+      "run": 9,
+      "w_true": 0.85,
+      "w_hat": 0.8500000000311136,
+      "abs_error": 3.1113667198212624e-11,
+      "signed_error": 3.1113667198212624e-11,
+      "residual_l2_nnls": 1.0907073011579938e-07,
+      "nnls_coef_alpha_beta": [
+        0.9289554237086944,
+        0.16393331002623576
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/08_w850/mix.xy"
+    },
+    {
+      "run": 10,
+      "w_true": 0.95,
+      "w_hat": 0.9500000001045222,
+      "abs_error": 1.0452227972024275e-10,
+      "signed_error": 1.0452227972024275e-10,
+      "residual_l2_nnls": 1.03005332383188e-07,
+      "nnls_coef_alpha_beta": [
+        0.9776994568451679,
+        0.05145786603651434
+      ],
+      "mix_xy_rel": "results/fixed_pair_w10_run/09_w950/mix.xy"
+    }
+  ]
+}

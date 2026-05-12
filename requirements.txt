@@ -1,0 +1,6 @@
+# Tested on Python 3.10+.
+# `pymatgen` is only required for the CIF -> PXRD fallback path.
+numpy
+scipy
+lmdb
+pymatgen
